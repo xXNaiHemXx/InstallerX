@@ -1,3 +1,4 @@
+
 import Store, { Schema } from 'electron-store';
 import * as fs from 'fs';
 import * as path from 'path';

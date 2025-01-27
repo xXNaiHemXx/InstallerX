@@ -1,11 +1,10 @@
 import React, { FC } from 'react';
-import { setupMsfsCommunityPath, setupInstallPath, setupTempLocation } from 'renderer/actions/install-path.utils';
+import { setupEts2ModPath, setupInstallPath, setupTempLocation } from 'renderer/actions/install-path.utils';
 import settings, { useSetting } from 'renderer/rendererSettings';
 import { Toggle } from '../Toggle';
 
 const SettingsItem: FC<{ name: string }> = ({ name, children }) => (
   <div className="flex flex-row items-center justify-between py-3.5">
-    {/* TODO: Remove this styling later */}
     <p className="m-0">{name}</p>
     {children}
   </div>
@@ -42,13 +41,8 @@ const PathSettingItem: React.FC<PathSettingItemProps> = ({ value, setValue, name
   );
 };
 
-const MsfsCommunityPathSettingItem = ({ value, setValue }: SettingItemProps<string>): JSX.Element => (
-  <PathSettingItem
-    value={value}
-    setValue={setValue}
-    name="MSFS Community Directory"
-    callback={setupMsfsCommunityPath}
-  />
+const Ets2ModPathSettingItem = ({ value, setValue }: SettingItemProps<string>): JSX.Element => (
+  <PathSettingItem value={value} setValue={setValue} name="ETS2 Mod Directory" callback={setupEts2ModPath} />
 );
 
 const InstallPathSettingItem = ({ value, setValue }: SettingItemProps<string>): JSX.Element => (
@@ -56,12 +50,7 @@ const InstallPathSettingItem = ({ value, setValue }: SettingItemProps<string>): 
 );
 
 const TempLocationSettingItem = ({ value, setValue }: SettingItemProps<string>): JSX.Element => (
-  <PathSettingItem
-    value={value}
-    setValue={setValue}
-    name="Location for temporary folders"
-    callback={setupTempLocation}
-  />
+  <PathSettingItem value={value} setValue={setValue} name="Location for Temporary Folders" callback={setupTempLocation} />
 );
 
 const SeparateTempLocationSettingItem = ({ value, setValue }: SettingItemProps<boolean>) => {
@@ -73,7 +62,7 @@ const SeparateTempLocationSettingItem = ({ value, setValue }: SettingItemProps<b
   };
 
   return (
-    <SettingsItem name="Separate location for temporary folders">
+    <SettingsItem name="Separate Location for Temporary Folders">
       <Toggle value={value} onToggle={handleClick} />
     </SettingsItem>
   );
@@ -108,7 +97,7 @@ const UseCdnSettingItem = ({ value, setValue }: SettingItemProps<boolean>) => {
 };
 
 export const DownloadSettings = (): JSX.Element => {
-  const [communityPath, setCommunityPath] = useSetting<string>('mainSettings.msfsCommunityPath');
+  const [modPath, setModPath] = useSetting<string>('mainSettings.ets2ModPath');
   const [installPath, setInstallPath] = useSetting<string>('mainSettings.installPath');
   const [tempLocation, setTempLocation] = useSetting<string>('mainSettings.tempLocation');
   const [separateTempLocation, setSeparateTempLocation] = useSetting<boolean>('mainSettings.separateTempLocation');
@@ -122,7 +111,7 @@ export const DownloadSettings = (): JSX.Element => {
       <div className="flex flex-col">
         <h2 className="text-white">Download Settings</h2>
         <div className="flex flex-col divide-y divide-gray-600">
-          <MsfsCommunityPathSettingItem value={communityPath} setValue={setCommunityPath} />
+          <Ets2ModPathSettingItem value={modPath} setValue={setModPath} />
           <InstallPathSettingItem value={installPath} setValue={setInstallPath} />
           <SeparateTempLocationSettingItem value={separateTempLocation} setValue={setSeparateTempLocation} />
           {separateTempLocation && <TempLocationSettingItem value={tempLocation} setValue={setTempLocation} />}

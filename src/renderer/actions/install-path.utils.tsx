@@ -1,7 +1,14 @@
-import settings, { msStoreBasePath, steamBasePath } from 'renderer/rendererSettings';
-import { Directories } from 'renderer/utils/Directories';
+import settings from 'renderer/rendererSettings';
 import { dialog } from '@electron/remote';
 import fs from 'fs';
+import path from 'path';
+
+const ets2ModFolder = path.join(
+  require('os').homedir(),
+  'Documents',
+  'Euro Truck Simulator 2',
+  'mod'
+);
 
 const selectPath = async (currentPath: string, dialogTitle: string, setting: string): Promise<string> => {
   const path = await dialog.showOpenDialog({
@@ -18,57 +25,39 @@ const selectPath = async (currentPath: string, dialogTitle: string, setting: str
   }
 };
 
-export const setupMsfsBasePath = async (): Promise<string> => {
-  const currentPath = Directories.msfsBasePath();
+export const setupEts2ModPath = async (): Promise<string> => {
+  const currentPath = ets2ModFolder;
 
-  const availablePaths: string[] = [];
-  if (fs.existsSync(msStoreBasePath)) {
-    availablePaths.push('Microsoft Store Edition');
-  }
-  if (fs.existsSync(steamBasePath)) {
-    availablePaths.push('Steam Edition');
-  }
-
-  if (availablePaths.length > 0) {
-    availablePaths.push('Custom Directory');
-
+  if (fs.existsSync(ets2ModFolder)) {
     const { response } = await dialog.showMessageBox({
-      title: 'InstallerX',
-      message: 'We found a possible MSFS installation.',
-      type: 'warning',
-      buttons: availablePaths,
+      title: 'ETS2 Mod Setup',
+      message: 'We found the default mod folder for ETS2. Do you want to use it?',
+      type: 'question',
+      buttons: ['Yes', 'No', 'Select Custom Directory'],
     });
 
-    const selection = availablePaths[response];
-    switch (selection) {
-      case 'Microsoft Store Edition':
-        settings.set('mainSettings.msfsBasePath', msStoreBasePath);
-        return msStoreBasePath;
-      case 'Steam Edition':
-        settings.set('mainSettings.msfsBasePath', steamBasePath);
-        return steamBasePath;
-      case 'Custom Directory':
+    switch (response) {
+      case 0: // Yes
+        settings.set('mainSettings.ets2ModPath', ets2ModFolder);
+        return ets2ModFolder;
+      case 2: // Select Custom Directory
         break;
+      default: // No
+        return '';
     }
   }
 
-  return await selectPath(currentPath, 'Select your MSFS base directory', 'mainSettings.msfsBasePath');
-};
-
-export const setupMsfsCommunityPath = async (): Promise<string> => {
-  const currentPath = Directories.installLocation();
-
-  return await selectPath(currentPath, 'Select your MSFS community directory', 'mainSettings.msfsCommunityPath');
+  return await selectPath(currentPath, 'Select your ETS2 mod directory', 'mainSettings.ets2ModPath');
 };
 
 export const setupInstallPath = async (): Promise<string> => {
-  const currentPath = Directories.installLocation();
+  const currentPath = ets2ModFolder;
 
   return await selectPath(currentPath, 'Select your install directory', 'mainSettings.installPath');
 };
 
 export const setupTempLocation = async (): Promise<string> => {
-  const currentPath = Directories.tempLocation();
+  const currentPath = ets2ModFolder;
 
   return await selectPath(currentPath, 'Select a location for temporary folders', 'mainSettings.tempLocation');
 };

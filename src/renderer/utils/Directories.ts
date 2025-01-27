@@ -20,8 +20,8 @@ export class Directories {
     return path.join(app.getPath('appData'), '..', 'Local');
   }
 
-  static msfsBasePath(): string {
-    return settings.get('mainSettings.msfsBasePath') as string;
+  static ets2ModPath(): string {
+    return settings.get('mainSettings.ets2ModPath') as string;
   }
 
   static communityLocation(): string {
@@ -61,7 +61,7 @@ export class Directories {
   }
 
   static inPackages(targetDir: string): string {
-    return path.join(this.msfsBasePath(), 'packages', this.sanitize(targetDir)).replace('LocalCache', 'LocalState');
+    return path.join(this.ets2ModPath(), 'packages', this.sanitize(targetDir)).replace('LocalCache', 'LocalState');
   }
 
   static inPackageCache(addon: Addon, targetDir: string): string {
