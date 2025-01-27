@@ -23,7 +23,7 @@ export const defaultConfiguration: Configuration = {
           key: 'simbridge',
           styles: ['align-bottom'],
         },
-        {
+        /* {
           kind: 'externalApp',
           key: 'mcdu-server',
           prettyName: 'MCDU Server',
@@ -45,7 +45,7 @@ export const defaultConfiguration: Configuration = {
           prettyName: 'MSFS',
           detectionType: 'tcp',
           port: 500,
-        },
+        }, */
         {
           kind: 'addonCategory',
           key: 'ets2',
