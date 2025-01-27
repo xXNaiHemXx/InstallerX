@@ -132,7 +132,7 @@ function initializeApp() {
 
     if (
       (settings.get('mainSettings.configDownloadUrl') as string) ===
-      'https://cdn.flybywiresim.com/installer/config/production.json'
+      'https://cdn.discordapp.com/attachments/1333151439467315302/1333273333776646217/production.json?ex=67984b0d&is=6796f98d&hm=94d52376026b9b5e731a9a8a49685e5e2d1f7c280b976a6891c2259117b907c4&'
     ) {
       settings.set('mainSettings.configDownloadUrl', packageInfo.configUrls.production);
     }
@@ -216,7 +216,7 @@ function initializeApp() {
 
   remote.initialize();
 
-  app.setAppUserModelId('FlyByWire Installer');
+  app.setAppUserModelId('InstallerX');
 
   let mainWindow: BrowserWindow;
 

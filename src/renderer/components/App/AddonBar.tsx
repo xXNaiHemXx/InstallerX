@@ -152,7 +152,7 @@ const AddonBarPublisherButton: FC<AddonBarPublisherButtonProps> = ({ button }) =
         }
         break;
     }
-  };
+  }; 
 
   const ButtonIcon = (BootstrapIcons as Record<string, Icon>)[button.icon] ?? 'span';
 

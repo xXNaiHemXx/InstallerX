@@ -39,7 +39,7 @@ export const AboutSettings: FC = () => {
         />
 
         <div className="flex flex-col gap-y-3">
-          <span className="font-manrope text-4xl font-bold">FlyByWire Installer</span>
+          <span className="font-manrope text-4xl font-bold">InstallerX</span>
           <a
             className="font-manrope text-2xl font-bold text-gray-400 hover:text-gray-600"
             onClick={() => {

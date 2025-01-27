@@ -33,7 +33,7 @@ export const setupMsfsBasePath = async (): Promise<string> => {
     availablePaths.push('Custom Directory');
 
     const { response } = await dialog.showMessageBox({
-      title: 'FlyByWire Installer',
+      title: 'InstallerX',
       message: 'We found a possible MSFS installation.',
       type: 'warning',
       buttons: availablePaths,

@@ -1,10 +1,10 @@
 {
-  "name": "fbw-installer",
-  "productName": "FlyByWire Installer",
-  "version": "3.4.3-dev.1",
+  "name": "installerx",
+  "productName": "InstallerX",
+  "version": "1.0.0-dev.1",
   "description": "Desktop application to install and customize FlyByWire addons",
   "configUrls": {
-    "production": "https://flybywirecdn.com/installer/config/production.json",
+    "production": "https://cdn.discordapp.com/attachments/1333151439467315302/1333273333776646217/production.json?ex=67984b0d&is=6796f98d&hm=94d52376026b9b5e731a9a8a49685e5e2d1f7c280b976a6891c2259117b907c4&",
     "confidentialBaseUrl": "https://flybywirecdn.com/installer/config/confidential"
   },
   "main": "out/main/index.js",
@@ -18,7 +18,7 @@
     "lint:fix": "eslint --fix --ext .ts,.tsx ."
   },
   "keywords": [],
-  "author": "FlyByWire Simulations",
+  "author": "Jayther Simulations",
   "license": "GPL-3.0",
   "build": {
     "extraResources": [
