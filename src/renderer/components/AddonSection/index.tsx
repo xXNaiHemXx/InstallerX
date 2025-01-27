@@ -463,7 +463,7 @@ const About: FC<{ addon: Addon }> = ({ addon }) => (
     <div className="flex items-center justify-between">
       <h2 className="font-bold text-white">About</h2>
 
-      <h2 className="text-white">{addon.aircraftName}</h2>
+      <h2 className="text-white">{addon.vehicleName}</h2>
     </div>
     <ReactMarkdown
       className="font-manrope text-xl font-light leading-relaxed text-white"

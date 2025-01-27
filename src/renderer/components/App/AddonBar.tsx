@@ -98,7 +98,7 @@ export const AddonBarItem: FC<AddonBarItemProps> = ({ addon, enabled, selected, 
       className={`flex w-full flex-col justify-between rounded-lg border-2 p-6 transition duration-200 ${border} ${background} ${!enabled && 'opacity-50'} ${enabled ? 'cursor-pointer' : 'cursor-not-allowed'} ${className}`}
       onClick={enabled ? onClick : undefined}
     >
-      <span className="mb-2.5 font-manrope text-2xl font-medium text-current">{addon.aircraftName}</span>
+      <span className="mb-2.5 font-manrope text-2xl font-medium text-current">{addon.vehicleName}</span>
       <div className="mt-1 flex h-10 flex-row justify-between">
         <img className="h-10 w-max" src={selected ? addon.titleImageUrl : addon.titleImageUrlSelected} />
         {installState && <AddonBarItemStatus status={installState.status} />}

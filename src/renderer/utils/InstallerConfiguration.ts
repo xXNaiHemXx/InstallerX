@@ -110,7 +110,7 @@ export interface Addon {
   repoOwner?: string;
   repoName?: string;
   category?: `@${string}`;
-  aircraftName: string;
+  vehicleName: string;
   titleImageUrl: string;
   titleImageUrlSelected: string;
   backgroundImageUrls: string[];
@@ -421,3 +421,14 @@ export class InstallerConfiguration {
     return !!config.publishers;
   }
 }
+import fs from 'fs';
+import path from 'path';
+
+export const checkEts2ModExists = (key: string): boolean => {
+  const modDirectory = `${process.env.HOME || process.env.USERPROFILE}\\Documents\\Euro Truck Simulator 2\\mod`;
+  const modFileName = `${key}.scs`;
+  const modFilePath = path.join(modDirectory, modFileName);
+
+  return fs.existsSync(modFilePath);
+};
+
