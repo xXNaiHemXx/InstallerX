@@ -4,8 +4,8 @@ export const defaultConfiguration: Configuration = {
   version: 1,
   publishers: [
     {
-      name: 'FlyByWire Simulations',
-      key: 'flybywiresim',
+      name: 'HEM GARAGE',
+      key: 'hemgarage',
       logoUrl: 'https://cdn.discordapp.com/attachments/1333151439467315302/1333177563098513539/ico.png?ex=6797f1dc&is=6796a05c&hm=3d7a911e45e9211838e19371bfa51d994fea6bcfeab201a4efaf301766533813&',
       defs: [
         {
@@ -82,9 +82,9 @@ export const defaultConfiguration: Configuration = {
             {
               name: 'Stable',
               key: 'ets2-Astwo-stable',
-              url: 'https://www.dropbox.com/scl/fo/inqpsxrs9cuelbz7f3751/ALXMr6A6SczsVqqRiMM_TRI?rlkey=z930j6r87l47w6bti0b1sa8fw&st=ekszirp9&dl=1',
+              url: 'https://cdn.headwindsim.net/addons/a339x/release',
               alternativeUrls: [
-                'https://www.dropbox.com/scl/fo/inqpsxrs9cuelbz7f3751/ALXMr6A6SczsVqqRiMM_TRI?rlkey=z930j6r87l47w6bti0b1sa8fw&st=ekszirp9&dl=1',
+                '',
               ],
               description: 'The stable version of the Scania mod for ETS2.',
               isExperimental: false,

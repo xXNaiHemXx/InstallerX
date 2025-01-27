@@ -26,12 +26,10 @@ const App = () => {
 
   const configuration = useAppSelector((state) => state.configuration);
 
-  const [addons] = useState<Addon[]>(
-    configuration.publishers.reduce((arr, curr) => {
-      arr.push(...curr.addons);
-      return arr;
-    }, []),
-  );
+  const [addons] = useState<Addon[]>(configuration.publishers.reduce((arr, curr) => {
+    arr.push(...curr.addons);
+    return arr;
+  }, []));
 
   useEffect(() => {
     for (const addon of addons) {
@@ -42,7 +40,6 @@ const App = () => {
       history.push(settings.get('cache.main.lastShownSection'));
     }
 
-    // Let's listen for a route change and set the last shown section to the incoming route pathname
     history.listen((location) => {
       settings.set('cache.main.lastShownSection', location.pathname);
     });
@@ -67,8 +64,6 @@ const App = () => {
 
   const isDevelopmentConfigURL = () => {
     const productionURL = packageInfo.configUrls.production;
-    // Protection against accidental screenshots of confidential config urls
-    // Limited to flybywire config url to prevent 3rd party urls to be hidden
     let showDevURL = 'n/a';
     if (!configUrl.includes(packageInfo.configUrls.confidentialBaseUrl)) {
       showDevURL = configUrl;
@@ -86,7 +81,6 @@ const App = () => {
   return (
     <>
       <ErrorModal />
-
       <ModalContainer />
 
       <SimpleBar>
